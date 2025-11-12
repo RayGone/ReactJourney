@@ -1,0 +1,25 @@
+{
+  "name": "react_learning",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "/Learn/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "learn:start:typescript": "npm start -w Learn/TypeScript",
+    "learn:dev:todo": "npm run dev -w Learn/TodoApp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "vite": "^7.2.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.17"
+  }
+}
