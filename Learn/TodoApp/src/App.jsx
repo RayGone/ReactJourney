@@ -9,18 +9,20 @@ const default_tasks = [
     {
         id: "001",
         name: "Task 1",
-        description: "This is a task 1."
+        description: "This is a task 1.",
+        status: false
     },
     {
         id: "002",
         name: "Task 2",
-        description: "This is task 2."
+        description: "This is task 2.",
+        status: false,
     }
 ];
 
 function App() {
   if(!localStorage.getItem("task_list"))
-    localStorage.setItem("task_list", "[]");
+    localStorage.setItem("task_list", default_tasks);
   
   const data = localStorage.getItem("task_list") ? JSON.parse(localStorage.getItem("task_list")) : default_tasks;
   const [tasks, setTasks] = useState(data);
@@ -56,7 +58,14 @@ function App() {
     localStorage.setItem("task_list", JSON.stringify(updated_tasks))
   }
 
-  const context_value = {tasks, addTask, updateTask, removeTask};
+  function overwriteTasks(new_tasks){
+    if(!!new_tasks){
+      setTasks(new_tasks);
+      localStorage.setItem("task_list", JSON.stringify(new_tasks))
+    }
+  }
+
+  const context_value = {tasks, addTask, updateTask, removeTask, overwriteTasks};
   return (
     <TaskContext.Provider value={context_value}>
       <Container>

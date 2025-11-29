@@ -1,12 +1,12 @@
-import { useId } from "react";
 import {TaskFormTemplate} from ".";
 
 export default function AddTaskForm({onSave=()=>{}, onCancel=()=>{}}){
-    const taskId = useId();
+    const taskId = crypto.randomUUID()
     const task = {
         id: taskId,
         name: "",
-        description: ""
+        description: "",
+        status: false
     }
 
     function onSubmit(form_data){
