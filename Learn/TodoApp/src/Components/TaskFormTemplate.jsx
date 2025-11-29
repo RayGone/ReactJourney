@@ -9,9 +9,11 @@ export default function TaskFormTemplate({header=null, task=null, onSave=()=>{},
     // console.log({form})
 
     function handleChange(e){
+        const key = e.target.name;
+        const value = (e.target.name=="status") ? !form.status : e.target.value;
         updateForm({
             ...form,
-            [e.target.name]: (e.target.name=="state") ? e.target.value == "on" : e.target.value
+            [key]: value
         })
     }
 
@@ -48,8 +50,8 @@ export default function TaskFormTemplate({header=null, task=null, onSave=()=>{},
             </div>
 
             { isEdit && <div className="flex flex-row gap-3">
-                    <label htmlFor="state">Is Task Complete?:</label>
-                    <input id="state" type="checkbox" name="state" onChange={handleChange}/>
+                    <label htmlFor="status">Is Task Complete?:</label>
+                    <input id="status" type="checkbox" name="status" onChange={handleChange} checked={form.status}/>
                 </div>}
 
             <div className="flex flex-col md:flex-row gap-3 w-full justify-start md:justify-between mt-2">

@@ -23,12 +23,7 @@ export default function Body(){
     function onOpenEditTaskForm(task_id=null){
         if(!!task_id){
             const selected = tasks.find((t) => t.id == task_id)
-            if(!task2edit){
-                setTask2Edit({...selected})
-            }
-            else if(task_id != task2edit?.id){
-                setTask2Edit({...selected})
-            }
+            setTask2Edit({...selected})
 
             if(!openEditTaskForm) setOpenEditTaskForm(true)
             

@@ -31,35 +31,35 @@ export default function TodoList({onAddTask=()=>{}, onEditTask=(t_id)=>t_id}){
             <span className="text-l">Task List</span>
             <div className="flex flex-row justify-end gap-2">
                 <FolderPlusIcon title="Add Task" className={`${iconBtnStyle} ${colorTransition}`}  onClick={()=>onAddTask()}/>
-                {(!!tasks && tasks.length>1) && <Bars3BottomRightIcon onClick={()=>setViewMode(!normalViewMode)} title="Sort" className={`${normalViewMode ? "" : "bg-blue-500 border-blue-700 border-2"} ${iconBtnStyle}`}></Bars3BottomRightIcon>}
+                {(!!tasksState && tasksState.length>1) && <Bars3BottomRightIcon onClick={()=>setViewMode(!normalViewMode)} title="Sort" className={`${normalViewMode ? "" : "bg-blue-500 border-blue-700 border-2"} ${iconBtnStyle}`}></Bars3BottomRightIcon>}
             </div>
         </div>
         <div className="mt-3 text-base">
-            { ( !tasks || tasks.length == 0 ) && <i>Create a task.</i> }
+            { ( !tasksState || tasksState.length == 0 ) && <i>Create a task.</i> }
                 
             { (normalViewMode && tasksState) && <ul>
                     {tasksState.map((task)=> <li key={task.id}
-                                            className={(task.state ? " bg-teal-500 hover:bg-teal-400 border-teal-100 " : "") + 
+                                            className={(task.status ? " bg-teal-500 hover:bg-teal-400 border-teal-100 " : "") + 
                                                 "h-10 group relative flex flex-row justify-between items-center gap-1 border-0 border-l-3 border-zinc-500 rounded-full \
-                                                rounded-r-none px-4 py-1 mr-2 my-1 bg-gray-900 hover:bg-gray-800 hover:shadow-[inset_0_0_10px_1px_rgba(0,0,0,0.3)]".replace(task.state ? "border-zinc-500" : "", "")}>
+                                                rounded-r-none px-4 py-1 mr-2 my-1 bg-gray-900 hover:bg-gray-800 hover:shadow-[inset_0_0_10px_1px_rgba(0,0,0,0.3)]".replace(task.status ? "border-zinc-500" : "", "")}>
                         <span className="text-base truncate w-full md:group-hover:w-[80%]">{task.name}</span>
                         <PencilSquareIcon onClick={(e)=>{onEditTask(task.id); e.stopPropagation() }} className={`w-5 h-5 block md:hidden group-hover:block ${iconBtnStyle} ${colorTransition}`} />
                         <TrashIcon className={`w-5 h-5 block md:hidden group-hover:block ${iconBtnStyle} ${colorTransition}`} onClick={(e)=>{onRemoveTask(task.id); e.stopPropagation() }}/>
-                        <input name="state" type="checkbox" checked={task.state} onChange={()=> setList(tasksState.map((ts) => {
+                        <input name="state" type="checkbox" checked={task.status} onChange={()=> setList(tasksState.map((ts) => {
                             if(ts.id !== task.id) return ts
                             else return {
                                 ...ts,
-                                state: !ts.state
+                                status: !ts.status
                             }
                         }))} />
                     </li>)}
                 </ul>
             }
                 
-            { (!normalViewMode && tasks) && <ReactSortable list={tasks} setList={setList}>
-                    {tasks.map((task)=> <li key={task.id} 
-                                            className={(task.state ? " bg-teal-500 hover:bg-teal-400 border-teal-100 " : "") + "h-10 group relative flex flex-row justify-between items-center gap-1 border-0 border-l-3 rounded-full \
-                                                rounded-r-none px-4 py-1 mr-2 my-2 bg-zinc-900 hover:bg-zinc-800 border-zinc-500 hover:shadow-[inset_0_0_10px_1px_rgba(0,0,0,0.3)]".replace(task.state ? "bg-zinc-900 hover:bg-zinc-800 border-zinc-500 " : "", "")}>
+            { (!normalViewMode && tasksState) && <ReactSortable list={tasksState} setList={setList}>
+                    {tasksState.map((task)=> <li key={task.id} 
+                                            className={(task.status ? " bg-teal-500 hover:bg-teal-400 border-teal-100 " : "") + "h-10 group relative flex flex-row justify-between items-center gap-1 border-0 border-l-3 rounded-full \
+                                                rounded-r-none px-4 py-1 mr-2 my-2 bg-zinc-900 hover:bg-zinc-800 border-zinc-500 hover:shadow-[inset_0_0_10px_1px_rgba(0,0,0,0.3)]".replace(task.status ? "bg-zinc-900 hover:bg-zinc-800 border-zinc-500 " : "", "")}>
                         <span className="text-base truncate w-full md:group-hover:w-[80%]">{task.name}</span>
                         <Bars3Icon className={`w-5 h-5 ${colorTransition}`} onClick={()=>{removeTask(task.id)}}/>
                     </li>)}
