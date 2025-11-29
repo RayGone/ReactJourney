@@ -5,8 +5,9 @@ export default function EditTaskForm({task=null, onSave=()=>{}, onCancel=()=>{}}
         onSave(form_data);
     }
 
+    const name = !!task ? (task.name.substring(0, 20).trim() + (task.name.length > 20 ? "..." : "" )) : "";
     return <>
-        {task && <TaskFormTemplate header="Edit Task" task={task} onSave={onSubmit} onCancel={onCancel}></TaskFormTemplate>}
+        {task && <TaskFormTemplate header={<span>Edit Task - <i>{name}</i></span>} task={task} onSave={onSubmit} onCancel={onCancel}></TaskFormTemplate>}
         {(task==null) && <span>Task Doesn't Exist!!!</span>}
     </>;
 }
