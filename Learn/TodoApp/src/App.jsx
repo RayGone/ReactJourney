@@ -17,12 +17,30 @@ const default_tasks = [
         name: "Task 2",
         description: "This is task 2.",
         status: false,
+    },
+    {
+        id: "003",
+        name: "Task Complete",
+        description: "This is task which is already complete.",
+        status: true,
+    },
+    {
+        id: "004",
+        name: "This is a task with very long name so we can test the text elide",
+        description: "This is task which is already complete.",
+        status: false,
+    },
+    {
+        id: "005",
+        name: "This is another task with very long name.",
+        description: "This is task which is already complete.",
+        status: false,
     }
 ];
 
 function App() {
   if(!localStorage.getItem("task_list"))
-    localStorage.setItem("task_list", default_tasks);
+    localStorage.setItem("task_list", JSON.stringify(default_tasks));
   
   const data = localStorage.getItem("task_list") ? JSON.parse(localStorage.getItem("task_list")) : default_tasks;
   const [tasks, setTasks] = useState(data);
