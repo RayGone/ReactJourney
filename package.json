@@ -7,8 +7,9 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "learn:start:typescript": "npm start -w Learn/TypeScript",
-    "learn:dev:todo": "npm run dev -w Learn/TodoApp"
+    "learn:typescript:start": "npm start -w Learn/TypeScript",
+    "learn:todoapp:dev": "npm run dev -w Learn/TodoApp",
+    "learn:todoapp:build": "npm run build -w Learn/TodoApp"
   },
   "keywords": [],
   "author": "",
