@@ -8,10 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "learn:typescript:start": "npm start -w Learn/TypeScript",
-
-    "learn:todoapp:dev": "npm run dev -w Learn/TodoApp",
-    "learn:todoapp:build": "npm run build -w Learn/TodoApp",
-
+    "learn:jstodo:dev": "npm run dev -w Learn/TodoApp",
+    "learn:jstodo:build": "npm run build -w Learn/TodoApp",
     "learn:tstodo:dev": "npm run dev -w Learn/TsTodoApp"
   },
   "keywords": [],
