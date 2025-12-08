@@ -12,6 +12,7 @@ export interface TaskStore {
   completeds: Tasks;
   addTask: (task: Task) => void;
   removeTask: (id: string) => void;
+  markComplete: (task: Task) => void;
   updateTask: (task: Task) => void;
   overwriteTasks: (tasks: Tasks) => void;
 }

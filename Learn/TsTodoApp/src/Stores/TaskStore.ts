@@ -15,13 +15,23 @@ const useTaskStore = create<TaskStore>()(
             
         updateTask: (task) => 
             set((store) => ({
-                tasklist: store.tasklist.map((t) => t.id==task.id ? task : t)
+                tasklist: store.tasklist.map((t) => t.id==task.id ? task : t),
             })),
 
         removeTask: (id) => 
             set((store)=> ({
-                tasklist: store.tasklist.filter(t=> t.id!=id)
+                tasklist: store.tasklist.filter(t=> t.id!=id),
+                completeds: store.completeds.filter(t=> t.id!=id)
             })),
+
+        markComplete: (task) => 
+            set((store) => ({
+                completeds: [
+                    ...store.completeds,
+                    task
+                ]
+            })),
+
         overwriteTasks: (tasks) => 
             set(() => ({
                 tasklist: tasks

@@ -2,9 +2,11 @@ import { useState } from "react";
 import { TodoList, TodoListSort } from "../Components";
 import { iconBtnStyle } from "../styles";
 import { Bars3Icon, FolderPlusIcon } from "@heroicons/react/16/solid";
+import { useTaskStore } from "../Stores";
 
 export default function Body(){
     const [sortView, setSortView] = useState<boolean>(false);
+    const num_tasks = useTaskStore(store => store.tasklist.length)
 
     return <div className="w-full block box-border px-2">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:gap-5">
@@ -13,7 +15,8 @@ export default function Body(){
                 <div className="py-2 px-1 border-b-1 h-max-32 m-1 flex flex-row justify-start gap-2">
                     <span className="mr-auto">Task List</span>
                     <FolderPlusIcon className={`${iconBtnStyle}`} title="Add Task" />
-                    <Bars3Icon className={`${!sortView ? "" : "dark:bg-blue-500 bg-blue-800/80 text-white hover:text-black border-blue-700 border-2"} ${iconBtnStyle}`} 
+                    <Bars3Icon className={`${!sortView ? "" : "dark:bg-blue-500 bg-blue-800/80 text-white hover:text-black border-blue-700 border-2"}
+                                ${num_tasks ? "" : "hidden"} ${iconBtnStyle}`} 
                         title="Sort List" onClick={()=>setSortView(v => !v)} />               
                 </div>
                 {!sortView && <TodoList />}

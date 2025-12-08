@@ -6,7 +6,7 @@ import type { FC } from "react";
 
 // import { ReactSortable } from "react-sortablejs";
 import { useTaskStore } from "../Stores";
-import type { Task, Tasks } from "../types";
+import type { Task } from "../types";
 import { colorTransition, iconBtnStyle } from "../styles";
 
 interface ListItemProps{
@@ -24,35 +24,53 @@ const ListItem: FC<ListItemProps> = ({task, onDelete, onEdit, updateStatus}) => 
         <span className="text-base truncate w-full md:group-hover:w-[80%]">{task.name}</span>
         <TrashIcon className={`text-blue-700/80 dark:text-white block md:hidden group-hover:block ${iconBtnStyle} ${colorTransition}`} onClick={(e)=>{e.stopPropagation(); onDelete(task.id)}}>Delete</TrashIcon>
         <PencilSquareIcon className={`text-blue-700/80 dark:text-white block md:hidden group-hover:block ${iconBtnStyle} ${colorTransition}`} onClick={(e)=>{e.stopPropagation(); onEdit(task.id)}}>Edit</PencilSquareIcon>
-        <span className={`flex items-center justify-center border-0 rounded-full shadow-sm shadow-blue-300 ${colorTransition}`}
+        <span className={`flex items-center justify-center border-0 rounded-full shadow-sm shadow-blue-300 ${colorTransition} cursor-pointer`}
             onClick={(e)=> {e.stopPropagation();}}>
             <input name="state" type="checkbox" checked={task.status} 
+                className="cursor-pointer"
                 onChange={()=> {updateStatus(task.id)}} />
         </span>
     </li>
 )
 
 const TodoList: FC = () => {
-    const {tasklist, completeds} = useTaskStore();
-    const tasks = ([] as Tasks).concat(tasklist).concat(completeds)
-    console.log({tasks});
+    const {tasklist, completeds, addTask, removeTask, markComplete} = useTaskStore();
+    // const tasks = ([] as Tasks).concat(tasklist).concat(completeds)
+    // console.log({tasks});
 
     const [showRemaining, setShowRemaining] = useState(true)
     const selected_style = "border-b-1 text-blue-500/90 text-shadow-md text-shadow-blue-800/20";
-
+    
+    const toggle_view = (!tasklist.length && completeds.length) ? false : (tasklist.length && !completeds.length) ? true : showRemaining
+    
     return (<div className="w-full">
         <div className="w-full text-sm flex flex-row flex-start gap-2 p-2">
-            <span className="mr-auto">{tasklist.length} remaining</span>
-            <span className={`${showRemaining ? selected_style : ""} cursor-pointer`} onClick={()=>setShowRemaining(true)}>Remaining</span>
-            <span className={`${!showRemaining ? selected_style : ""} cursor-pointer`} onClick={()=>setShowRemaining(false)}>Completed</span>
+            <span className={`mr-auto ${(!tasklist.length && !completeds.length) ? "hidden" : ""} `}>{tasklist.length} remaining</span>
+            <span className={`${toggle_view ? selected_style : ""} ${tasklist.length ? "" : "hidden"} cursor-pointer`} onClick={()=>setShowRemaining(true)}>Remaining</span>
+            <span className={`${!toggle_view ? selected_style : ""} ${completeds.length ? "" : "hidden"} cursor-pointer`} onClick={()=>setShowRemaining(false)}>Completed</span>
         </div>
 
         <ul className="w-full flex flex-col gap-1 py-2 text-sm">
-            {(showRemaining ? tasklist : completeds).map(t => (
+            { (!tasklist.length && !completeds.length) && <span>Create a new task.</span>}
+            {(toggle_view ? tasklist : completeds).map(t => (
                 <ListItem key={t.id} task={t} 
                     onEdit={(id)=>console.log("onEdit", id)} 
-                    onDelete={(id)=>console.log("onDelete", id)} 
-                    updateStatus={(id)=>console.log("updateStatus", id)} />
+                    onDelete={(id)=>removeTask(id)} 
+                    updateStatus={(id)=>{
+                        const task = tasklist.filter(t => t.id == id)[0]
+                        if(task){
+                            task.status = !task.status;
+
+                            removeTask(id);
+                            markComplete(task);
+                        }else{
+                            const _task = completeds.filter(t => t.id == id)[0]
+                            _task.status = !_task.status;
+                            
+                            removeTask(id);
+                            addTask(_task);
+                        }
+                    }} />
             ))}
         </ul>
     </div>);
