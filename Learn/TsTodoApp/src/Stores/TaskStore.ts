@@ -4,10 +4,12 @@ import default_tasks from "../default.data";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware"
 
+const isDev = import.meta.env.DEV;
+
 const useTaskStore = create<TaskStore>()(
     persist((set)=> ({
-        tasklist: default_tasks.filter(t=>!t.status),
-        completeds: default_tasks.filter(t=>t.status),
+        tasklist: isDev ? default_tasks.filter(t=>!t.status) : [],
+        completeds: isDev ? default_tasks.filter(t=>t.status) : [],
         addTask: (task) =>
             set((store) => ({
                 tasklist: [...store.tasklist, task],
@@ -26,11 +28,28 @@ const useTaskStore = create<TaskStore>()(
 
         markComplete: (task) => 
             set((store) => ({
+                tasklist: store.tasklist.filter(t => t.id != task.id),
                 completeds: [
                     ...store.completeds,
-                    task
+                    {
+                        ...task,
+                        status: true
+                    }
                 ]
             })),
+
+        unMarkComplete: (task) => 
+            set((store) => ({
+                tasklist: [
+                    ...store.tasklist,
+                    {
+                        ...task,
+                        status: false
+                    }
+                ],
+                completeds: store.completeds.filter(t => t.id != task.id)
+            })),
+
 
         overwriteTasks: (tasks) => 
             set(() => ({
