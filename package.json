@@ -10,7 +10,8 @@
     "learn:typescript:start": "npm start -w Learn/TypeScript",
     "learn:jstodo:dev": "npm run dev -w Learn/TodoApp",
     "learn:jstodo:build": "npm run build -w Learn/TodoApp",
-    "learn:tstodo:dev": "npm run dev -w Learn/TsTodoApp"
+    "learn:tstodo:dev": "npm run dev -w Learn/TsTodoApp",
+    "learn:tstodo:build": "npm run build -w Learn/TsTodoApp"
   },
   "keywords": [],
   "author": "",
