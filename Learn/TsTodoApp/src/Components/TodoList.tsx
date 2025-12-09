@@ -52,7 +52,7 @@ const TodoList: FC<TodoListProps> = ({onOpen}) => {
     
     return (<div className="w-full">
         <div className="w-full text-sm flex flex-row flex-start gap-2 p-2">
-            <span className={`mr-auto ${(!tasklist.length && !completeds.length) ? "hidden" : ""} `}>{tasklist.length} remaining</span>
+            <span className={`font-light mr-auto ${(!tasklist.length && !completeds.length) ? "hidden" : ""} `}>{tasklist.length} remaining</span>
             <span className={`${toggle_view ? selected_style : ""} ${tasklist.length ? "" : "hidden"} cursor-pointer`} onClick={()=>setShowRemaining(true)}>Remaining</span>
             <span className={`${!toggle_view ? selected_style : ""} ${completeds.length ? "" : "hidden"} cursor-pointer`} onClick={()=>setShowRemaining(false)}>Completed</span>
         </div>
@@ -66,12 +66,12 @@ const TodoList: FC<TodoListProps> = ({onOpen}) => {
                     onDelete={(id)=>removeTask(id)} 
                     updateStatus={(id)=>{
                         let task = tasklist.find(t => t.id == id)
-                        if(task && task.status){
+                        console.log({task})
+                        if(task){
                             markComplete(task);
                         } else{
-
                             task = completeds.find(t => t.id == id)
-                            if(task && task.status){
+                            if(task){
                                 unMarkComplete(task);
                             }
                         }

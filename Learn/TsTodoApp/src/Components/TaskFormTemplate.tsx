@@ -38,12 +38,12 @@ const TaskFormTemplate: FC<TaskFormProp> = ({header="", task=null, onSave=()=>{}
     // }, [task])
 
     return <>
-        <h2 className="font-bold text-white-700 text-xl border-0 border-b-1 mb-5">{header}</h2>
+        <h2 className="font-semibold text-white-700 text-xl border-0 border-b-1 mb-5">{header}</h2>
         <form className="w-full flex flex-col gap-5 text-md p-8 rounded dark:bg-gray-700 shadow-[inset_0_0_10px_1px_rgba(0,0,0,0.3)]"
             onSubmit={onSubmit}>
             <div className='grid grid-cols-1 gap-1'>
                 <label htmlFor='name'>Task Name:</label>
-                <input id="name" name="name" className='w-full p-2 dark:bg-gray-700 border border-gray-500 border-l-4 rounded' type='text' 
+                <input id="name" name="name" className='font-light w-full p-2 dark:bg-gray-700 border border-gray-500 border-l-4 rounded' type='text' 
                         required
                         autoFocus={true}
                         value={form.name} 
@@ -52,7 +52,7 @@ const TaskFormTemplate: FC<TaskFormProp> = ({header="", task=null, onSave=()=>{}
             </div> 
             <div className='grid grid-cols-1 gap-1'>
                 <label htmlFor='description'>Task Description:</label>
-                <textarea id="description" name="description" placeholder="Task description..." className='w-full p-2 dark:bg-gray-700 border border-l-4 border-gray-500 rounded' rows={3} 
+                <textarea id="description" name="description" placeholder="Task description..." className='font-light w-full p-2 dark:bg-gray-700 border border-l-4 border-gray-500 rounded' rows={3} 
                         value={form.description}
                         onChange={handleChange} />
             </div>
