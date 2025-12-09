@@ -1,4 +1,4 @@
-import type { Tasks } from './types'
+import type { Task, Tasks } from './types'
 
 const tasks: Tasks = [
     {
@@ -26,5 +26,14 @@ const tasks: Tasks = [
         status: true
     }
 ]
+
+export function getEmptyTask(): Task{
+    return {
+        id: crypto.randomUUID(),
+        name: "",
+        description: "",
+        status: false
+    }
+}
 
 export default tasks;

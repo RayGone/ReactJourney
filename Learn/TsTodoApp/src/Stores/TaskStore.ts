@@ -4,10 +4,12 @@ import default_tasks from "../default.data";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware"
 
+const isDev = import.meta.env.DEV;
+
 const useTaskStore = create<TaskStore>()(
     persist((set)=> ({
-        tasklist: default_tasks.filter(t=>!t.status),
-        completeds: default_tasks.filter(t=>t.status),
+        tasklist: isDev ? default_tasks.filter(t=>!t.status) : [],
+        completeds: isDev ? default_tasks.filter(t=>t.status) : [],
         addTask: (task) =>
             set((store) => ({
                 tasklist: [...store.tasklist, task],
@@ -15,13 +17,40 @@ const useTaskStore = create<TaskStore>()(
             
         updateTask: (task) => 
             set((store) => ({
-                tasklist: store.tasklist.map((t) => t.id==task.id ? task : t)
+                tasklist: store.tasklist.map((t) => t.id==task.id ? task : t),
             })),
 
         removeTask: (id) => 
             set((store)=> ({
-                tasklist: store.tasklist.filter(t=> t.id!=id)
+                tasklist: store.tasklist.filter(t=> t.id!=id),
+                completeds: store.completeds.filter(t=> t.id!=id)
             })),
+
+        markComplete: (task) => 
+            set((store) => ({
+                tasklist: store.tasklist.filter(t => t.id != task.id),
+                completeds: [
+                    ...store.completeds,
+                    {
+                        ...task,
+                        status: true
+                    }
+                ]
+            })),
+
+        unMarkComplete: (task) => 
+            set((store) => ({
+                tasklist: [
+                    ...store.tasklist,
+                    {
+                        ...task,
+                        status: false
+                    }
+                ],
+                completeds: store.completeds.filter(t => t.id != task.id)
+            })),
+
+
         overwriteTasks: (tasks) => 
             set(() => ({
                 tasklist: tasks
