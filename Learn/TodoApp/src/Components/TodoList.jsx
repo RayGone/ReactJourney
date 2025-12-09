@@ -1,4 +1,4 @@
-import { FolderPlusIcon, Bars3BottomRightIcon, PlusIcon, TrashIcon, PencilSquareIcon, Bars3Icon } from "@heroicons/react/16/solid";
+import { FolderPlusIcon, PlusIcon, TrashIcon, PencilSquareIcon, Bars3Icon } from "@heroicons/react/16/solid";
 import { iconBtnStyle, colorTransition, darkBtnWithIconStyle } from "../common_tailwind";
 import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../AppContexts";
@@ -41,7 +41,7 @@ export default function TodoList({onAddTask=()=>{}, onEditTask=(t_id)=>t_id}){
             <span className="text-l">Task List</span>
             <div className="flex flex-row justify-end gap-2">
                 <FolderPlusIcon title="Add Task" className={`${iconBtnStyle} ${colorTransition}`}  onClick={()=>onAddTask()}/>
-                {(!!tasksState && tasksState.length>1) && <Bars3BottomRightIcon onClick={()=>setViewMode(!normalViewMode)} title="Sort" className={`${normalViewMode ? "" : "bg-blue-500 border-blue-700 border-2"} ${iconBtnStyle}`}></Bars3BottomRightIcon>}
+                {(!!tasksState && tasksState.length>1) && <Bars3Icon onClick={()=>setViewMode(!normalViewMode)} title="Sort" className={`${normalViewMode ? "" : "bg-blue-500 border-blue-700 border-2"} ${iconBtnStyle}`}></Bars3Icon>}
             </div>
         </div>
         <span className="mr-auto text-sm">{tasksState.filter(t=>!t.status).length} tasks remaining</span>
