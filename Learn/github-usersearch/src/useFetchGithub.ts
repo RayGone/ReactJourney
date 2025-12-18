@@ -5,7 +5,7 @@ import type { User, Repo } from "./interfaces";
 const base_url = 'https://api.github.com/search'
 const instance = axios.create({
   baseURL: base_url,
-  timeout: 1000,
+  timeout: 10000,
   headers: {
     'X-GitHub-Api-Version': '2022-11-28',
     'Content-Type': 'application/json',
