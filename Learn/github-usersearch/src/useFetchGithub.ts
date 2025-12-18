@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const base_url = 'https://api.github.com/search'
 const instance = axios.create({
@@ -7,12 +7,13 @@ const instance = axios.create({
   timeout: 1000,
   headers: {
     'X-GitHub-Api-Version': '2022-11-28',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    "Accept": "application/vnd.github+json"
   }
 });
 
-export type fetchType = "users" | "repo";
-export type dictionary = Record<string, number | string | boolean>
+export type fetchType = "users" | "repositories";
+export type dictionary = Record<string, any>
 
 function parseLink(link: string){
   if(!link) return {}
@@ -38,9 +39,16 @@ export const useFetchGithub = (get: fetchType = 'users') => {
 
   const next_link = useRef<dictionary>({})
   const timeoutRef = useRef<number | null>(null);
+  const lastKeyword = useRef("");
+
+  const changeGetType = (sgt: fetchType) => {
+    setData([]);
+    setGetType(sgt);
+  }
 
   function fetchData(keyword: string){
-
+    keyword = keyword.trim();
+    lastKeyword.current = keyword
     if(keyword == "<next>"){
       if('next' in next_link.current){
         setLoading(true);
@@ -66,8 +74,9 @@ export const useFetchGithub = (get: fetchType = 'users') => {
 
     timeoutRef.current = setTimeout(()=>{
       setLoading(true)
-      const url = `/${get}?q=${keyword}`;
+      const url = `/${getType}?q=${keyword}`;
       instance.get(url).then((res) => {
+        console.log({res})
         next_link.current = parseLink(res.headers['link'])
         setNext(Object.keys(next_link.current).includes('next'))
         setLoading(false)
@@ -76,5 +85,10 @@ export const useFetchGithub = (get: fetchType = 'users') => {
     }, 350)
   }
 
-  return { getType, setGetType, data, fetchData, isloading, isNext};
+  
+  useEffect(()=>{
+    fetchData(lastKeyword.current)
+  }, [getType])
+  
+  return { getType, changeGetType, data, fetchData, isloading, isNext};
 };

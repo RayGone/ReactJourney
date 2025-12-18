@@ -4,19 +4,22 @@ import SearchBar from './SearchBar'
 import { useFetchGithub } from './useFetchGithub'
 
 function App() {
-  const {data, fetchData, isloading, isNext} = useFetchGithub();
+  const {data, fetchData, getType, changeGetType, isloading, isNext} = useFetchGithub();
 
   return (<div className='w-[100dvw] h-[100dvh] flex flex-col items-center justify-center gap-3 select-none bg-gray-600'>
     <div className='bg-gray-200 rounded-full'>
       <img src='https://docs.github.com/assets/cb-345/images/site/favicon.png' alt='github icon' />
     </div>
-    <SearchBar onSearch={(keyword) => {
-      fetchData(keyword)
-    }} />
+    <SearchBar 
+      onSearch={(keyword) => {
+        fetchData(keyword)
+      }}
+      searchType={getType}
+      setSearchType={(st)=>changeGetType(st)} />
     <div className='h-[50%]  md:w-[50%] w-[80%] text-white'>
       {isloading && <span className='w-full flex justify-center z-50'><ArrowPathIcon className='w-8 h-8 animate-spin'>The data is Loading</ArrowPathIcon></span>}
       <div className='h-full w-full overflow-auto flex flex-col gap-2'>
-        {data && 
+        {(getType=="users" && data) && 
           data.map((item)=><span 
             key={item.id as string + item.node_id as string}
             onClick={() => {
@@ -25,6 +28,22 @@ function App() {
             className='flex flex-row items-center gap-2 p-2 hover:bg-slate-700'>
             <img src={item.avatar_url as string} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
             <span className='font-thin'>{item.login}</span>
+          </span>)
+        }
+        
+        {(getType!=="users" && data) && 
+          data.map((item)=><span 
+            key={item.id as string + item.node_id as string}
+            onClick={() => {
+              window.open(item.html_url as string, "_blank")
+            }}
+            className='flex flex-col gap-0 p-2 hover:bg-slate-700'>
+              <span className='font-bold'>{item?.name}</span>  
+              <div className='flex flex-row items-center gap-2'>   
+                Owner: 
+                <span className='font-thin truncate'>{item?.owner?.login}</span>           
+                <img src={item?.owner?.avatar_url as string} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
+              </div>
           </span>)
         }
       </div>
