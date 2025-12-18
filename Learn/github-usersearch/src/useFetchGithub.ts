@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import type { User, Repo } from "./interfaces";
 
 const base_url = 'https://api.github.com/search'
 const instance = axios.create({
@@ -13,7 +14,7 @@ const instance = axios.create({
 });
 
 export type fetchType = "users" | "repositories";
-export type dictionary = Record<string, any>
+export type dictionary = Record<string, string>
 
 function parseLink(link: string){
   if(!link) return {}
@@ -34,7 +35,7 @@ function parseLink(link: string){
 export const useFetchGithub = (get: fetchType = 'users') => {
   const [getType, setGetType] = useState<fetchType>(get);
   const [isloading, setLoading] = useState<boolean>(false); 
-  const [data, setData] = useState<dictionary[]>([]);
+  const [data, setData] = useState<(User | Repo)[]>([]);
   const [isNext, setNext] = useState<boolean>(false);
 
   const next_link = useRef<dictionary>({})
@@ -57,7 +58,7 @@ export const useFetchGithub = (get: fetchType = 'users') => {
           next_link.current = parseLink(res.headers['link'])
           setNext(Object.keys(next_link.current).includes('next'))
           setLoading(false);
-          setData(data => data.concat(res.data.items as dictionary[]))
+          setData(data => data.concat(res.data.items as (typeof data)))
         }).catch(e => {setLoading(false); console.log(e)})
         return
       }
@@ -89,6 +90,6 @@ export const useFetchGithub = (get: fetchType = 'users') => {
   useEffect(()=>{
     fetchData(lastKeyword.current)
   }, [getType])
-  
+
   return { getType, changeGetType, data, fetchData, isloading, isNext};
 };

@@ -2,6 +2,7 @@ import { ArrowPathIcon, ChevronDoubleDownIcon } from '@heroicons/react/24/outlin
 import './App.css'
 import SearchBar from './SearchBar'
 import { useFetchGithub } from './useFetchGithub'
+import type { Repo, User } from './interfaces';
 
 function App() {
   const {data, fetchData, getType, changeGetType, isloading, isNext} = useFetchGithub();
@@ -20,20 +21,20 @@ function App() {
       {isloading && <span className='w-full flex justify-center z-50'><ArrowPathIcon className='w-8 h-8 animate-spin'>The data is Loading</ArrowPathIcon></span>}
       <div className='h-full w-full overflow-auto flex flex-col gap-2'>
         {(getType=="users" && data) && 
-          data.map((item)=><span 
-            key={item.id as string + item.node_id as string}
+          (data as User[]).map((item)=><span 
+            key={`${item.id}_` + item.node_id}
             onClick={() => {
               window.open(item.html_url as string, "_blank")
             }}
             className='flex flex-row items-center gap-2 p-2 hover:bg-slate-700'>
-            <img src={item.avatar_url as string} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
+            <img src={item?.avatar_url} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
             <span className='font-thin'>{item.login}</span>
           </span>)
         }
         
         {(getType!=="users" && data) && 
-          data.map((item)=><span 
-            key={item.id as string + item.node_id as string}
+          (data as Repo[]).map((item)=><span 
+            key={`${item.id}_` + item.node_id}
             onClick={() => {
               window.open(item.html_url as string, "_blank")
             }}
@@ -41,7 +42,7 @@ function App() {
               <span className='font-bold'>{item?.name}</span>  
               <div className='flex flex-row items-center gap-2'>   
                 Owner: 
-                <span className='font-thin truncate'>{item?.owner?.login}</span>           
+                <span className='font-thin truncate'>{item.owner?.login}</span>           
                 <img src={item?.owner?.avatar_url as string} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
               </div>
           </span>)
