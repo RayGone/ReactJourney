@@ -11,4 +11,5 @@ export interface User extends APIResponse{
 export interface Repo extends APIResponse{
     name: string
     owner: User
+    description: string
 }

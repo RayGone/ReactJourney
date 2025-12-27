@@ -19,14 +19,14 @@ function App() {
       setSearchType={(st)=>changeGetType(st)} />
     <div className='h-[50%]  md:w-[50%] w-[80%] text-white'>
       {isloading && <span className='w-full flex justify-center z-50'><ArrowPathIcon className='w-8 h-8 animate-spin'>The data is Loading</ArrowPathIcon></span>}
-      <div className='h-full w-full overflow-auto flex flex-col gap-2'>
+      <div className='h-full w-full overflow-auto flex flex-col gap-1'>
         {(getType=="users" && data) && 
           (data as User[]).map((item)=><span 
             key={`${item.id}_` + item.node_id}
             onClick={() => {
               window.open(item.html_url as string, "_blank")
             }}
-            className='flex flex-row items-center gap-2 p-2 hover:bg-slate-700'>
+            className='flex flex-row items-center gap-2 p-2 hover:bg-slate-700 hover:rounded hover:shadow-lg border-b-1 border-slate-700'>
             <img src={item?.avatar_url} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
             <span className='font-thin'>{item.login}</span>
           </span>)
@@ -38,12 +38,12 @@ function App() {
             onClick={() => {
               window.open(item.html_url as string, "_blank")
             }}
-            className='flex flex-col gap-0 p-2 hover:bg-slate-700'>
-              <span className='font-bold'>{item?.name}</span>  
-              <div className='flex flex-row items-center gap-2'>   
-                Owner: 
-                <span className='font-thin truncate'>{item.owner?.login}</span>           
+            className='flex flex-col gap-1 p-2 hover:bg-slate-700 hover:rounded hover:shadow-lg border-b-1 border-slate-700'>
+              <span className='font-bold bg-gradient-to-r from-slate-800/50 to-gray-600/10 to-30% rounded-full px-6 py-2'>{item?.name}</span>  
+              <span className='text-xs font-thin px-6 pb-2'>{item.description}</span>
+              <div className='flex flex-row items-center gap-2'>    
                 <img src={item?.owner?.avatar_url as string} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
+                <span className='font-thin truncate capitalize'>{item.owner?.login}</span>           
               </div>
           </span>)
         }
@@ -52,8 +52,8 @@ function App() {
     {isNext && 
       <span 
         onClick={()=>{fetchData("<next>")}}
-        className='md:w-[50%] w-[80%] text-white flex justify-center p-2 shadow-slate-500/50 shadow-lg __shadow-[_-3px_-3px_10px_5px_rgba(168, 143, 143, 0.2)] text-shadow-md text-shadow-blue-500/20'>
-        <ChevronDoubleDownIcon className='w-4' />
+        className='md:w-[50%] w-[80%] text-white flex justify-center p-2 shadow-slate-500/30 shadow-lg __shadow-[_-3px_-3px_10px_5px_rgba(168, 143, 143, 0.2)] hover:shadow-xl'>
+        <ChevronDoubleDownIcon className='w-5 text-slate-200' />
     </span>}
   </div>)
 }
