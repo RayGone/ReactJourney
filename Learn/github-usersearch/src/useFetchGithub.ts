@@ -5,7 +5,7 @@ import type { User, Repo } from "./interfaces";
 const base_url = 'https://api.github.com/search'
 const instance = axios.create({
   baseURL: base_url,
-  timeout: 10000,
+  timeout: 15000,
   headers: {
     'X-GitHub-Api-Version': '2022-11-28',
     'Content-Type': 'application/json',
@@ -49,7 +49,6 @@ export const useFetchGithub = (get: fetchType = 'users') => {
 
   function fetchData(keyword: string){
     keyword = keyword.trim();
-    lastKeyword.current = keyword
     if(keyword == "<next>"){
       if('next' in next_link.current){
         setLoading(true);
@@ -66,6 +65,7 @@ export const useFetchGithub = (get: fetchType = 'users') => {
     }
     clearTimeout(timeoutRef.current!)
     
+    lastKeyword.current = keyword
     if(!keyword.length) {
       setData([])
       setNext(false)
