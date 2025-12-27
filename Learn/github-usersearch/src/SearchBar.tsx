@@ -8,6 +8,10 @@ interface SearchBarProp {
     setSearchType(searchType: fetchType): void
 }
 
+function capitalize(word: string): string{
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
 const SearchBar: FC<SearchBarProp> = ({onSearch, searchType, setSearchType}) => {
     const [toggle, setToggle] = useState(false);
     const [searchWord, setSearchWord] = useState("");
@@ -36,7 +40,7 @@ const SearchBar: FC<SearchBarProp> = ({onSearch, searchType, setSearchType}) => 
                 </ul>
             </div>
         </div>
-        <input id='search' placeholder="Search..." type='text' 
+        <input id='search' placeholder={`Search ${capitalize(searchType)}...`} type='text' 
             className="grow p-2 focus:outline-none focus:ring-0 border-l-2 font-thin"
             onChange={(e) => {setSearchWord(e.target.value); onSearch(e.target.value)}} />
         <div className="px-2 pr-3 py-2"
