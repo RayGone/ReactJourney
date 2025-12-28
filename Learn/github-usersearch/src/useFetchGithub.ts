@@ -77,7 +77,7 @@ export const useFetchGithub = (get: fetchType = 'users') => {
       setLoading(true)
       const url = `/${getType}?q=${keyword}`;
       instance.get(url).then((res) => {
-        console.log({res})
+        // console.log({res})
         next_link.current = parseLink(res.headers['link'])
         setNext(Object.keys(next_link.current).includes('next'))
         setLoading(false)
