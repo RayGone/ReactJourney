@@ -22,7 +22,7 @@ export default function Body({children}: PropsWithChildren){
 
     return <div className="w-full block box-border px-2">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 md:gap-5">
-            <div className={`h-[88vh] col-span-1 text-xl h-[88vh] md:block col-span overflow-auto md:shadow-[8px_2px_10px_-6px] 
+            <div className={`col-span-1 text-xl md:block col-span md:shadow-[8px_2px_10px_-6px] h-[85vh] md:h-[88vh] overflow-auto
                             shadow-blue-900 dark:shadow-gray-900 md:border-r-1 border-black ${visibility ? "hidden" : "block"}`}>
                 <div className="py-2 px-1 border-b-1 h-max-32 m-1 flex flex-row justify-start gap-2">
                     <span className="mr-auto">Task List</span>
