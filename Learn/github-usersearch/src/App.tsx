@@ -17,8 +17,8 @@ function App() {
       }}
       searchType={getType}
       setSearchType={(st)=>changeGetType(st)} />
-    <div className='h-[50%]  md:w-[50%] w-[80%] text-white'>
-      {isloading && <span className='w-full flex justify-center z-50'><ArrowPathIcon className='w-8 h-8 animate-spin'>The data is Loading</ArrowPathIcon></span>}
+    <div className='h-[50%] md:w-[50%] w-[80%] text-white relative'>
+      {isloading && <div className='absolute w-full'><span className='w-full flex justify-center z-50'><ArrowPathIcon className='w-8 h-8 animate-spin'>The data is Loading</ArrowPathIcon></span></div>}
       <div className='h-full w-full overflow-auto flex flex-col gap-1'>
         {(getType=="users" && data) && 
           (data as User[]).map((item)=><span 
@@ -40,7 +40,7 @@ function App() {
             }}
             className='flex flex-col gap-1 p-2 hover:bg-slate-700 hover:rounded hover:shadow-lg border-b-1 border-slate-700'>
               <span className='font-bold bg-gradient-to-r from-slate-800/50 to-gray-600/10 to-30% rounded-full px-6 py-2'>{item?.name}</span>  
-              <span className='text-xs font-thin px-6 pb-2'>{item.description}</span>
+              <span className='text-xs font-thin px-6 pb-2 line-clamp-4 ellipsis text-justify capitalize'>{ !(item.description && item.description.length > 500) ? item.description : item.description.slice(0, 500)}</span>
               <div className='flex flex-row items-center gap-2'>    
                 <img src={item?.owner?.avatar_url as string} alt="Github Avatar" className='w-9 h-9 rounded-full'/>
                 <span className='font-thin truncate capitalize'>{item.owner?.login}</span>           
@@ -52,7 +52,8 @@ function App() {
     {isNext && 
       <span 
         onClick={()=>{fetchData("<next>")}}
-        className='md:w-[50%] w-[80%] text-white flex justify-center p-2 shadow-slate-500/30 shadow-lg __shadow-[_-3px_-3px_10px_5px_rgba(168, 143, 143, 0.2)] hover:shadow-xl'>
+        className='z-10 md:w-[50%] w-[80%] text-white flex justify-center p-2 shadow-slate-500/30 shadow-lg __shadow-[_-3px_-3px_10px_5px_rgba(168, 143, 143, 0.2)] \
+          cursor-pointer hover:shadow-xl'>
         <ChevronDoubleDownIcon className='w-5 text-slate-200' />
     </span>}
   </div>)
