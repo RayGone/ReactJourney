@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+  height: 100dvh;
+  box-sizing: border-box;
+  
+  @apply scroll-smooth;
+
+  /* @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  } */
+}
+
+.e{
+    color: white;
+    background-color: oklch(59.457% 0.23777 24.408 / 0.805);
+    padding: 2px 4px;
+    margin: 1px;
+    font-weight: bolder;
+    font-family: monospace;
+}
+
+.l{
+    background-color: oklch(92.708% 0.19321 103.177 / 0.89);
+    padding: 2px 4px;
+    margin: 1px;
+    color: black;
+    font-weight: bolder;
+    font-family: monospace;
+    text-shadow: 1px 1px 3px rgb(43, 43, 40);
+}
+
+
+.glass-card {
+    @apply bg-gray-50/30 dark:bg-gray-800/20;
+    /* @apply bg-[linear-gradient(180deg,rgba(255,255,255,0.8),transparent,rgba(255,255,255,0.3))] dark:bg-[linear-gradient(180deg,rgba(50,50,50,0.8),transparent,rgba(50,50,50,0.3))]; */
+    /* backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);*/
+    @apply backdrop-blur-xs backdrop-brightness-100 dark:backdrop-brightness-50 backdrop-contrast-100 relative overflow-auto rounded;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 20px 10px rgba(255, 255, 255, 0.5);
+    /* position: relative; */
+    /* overflow: hidden; */
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+}
+
+.glass-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3),
+        transparent,
+        rgba(255, 255, 255, 0.1)
+    );
+}
+
+.theme-toggle-button > .inactive {
+  @apply bg-slate-700 dark:bg-slate-500 text-neutral-200 px-2;
+}
