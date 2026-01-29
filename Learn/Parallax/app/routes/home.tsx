@@ -1,8 +1,6 @@
 import type { Route } from "./+types/home";
 import { MobileView } from "~/views/MobileView";
 import { ParallaxView } from "~/views/ParallaxView";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import IconLink from "~/components/IconLink";
 import PageLayout from "~/components/PageLayout";
 
 export function meta({}: Route.MetaArgs) {

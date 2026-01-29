@@ -10,6 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { useEffect } from "react";
+import IconLink from "./components/IconLink";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -49,6 +51,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        
+        <div className="absolute md:hidden bottom-6 right-5">
+          <IconLink link="https://wa.me/61469805899" className="p-2 bg-lime-400 rounded-full shadow-md shadow-black/40 z-50 hover:shadow-sm dark:shadow-gray-400" faIcon={faWhatsapp} faIconClass="text-green-800/80"/>
+        </div>
       </body>
     </html>
   );
