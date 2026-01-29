@@ -1,12 +1,9 @@
 import type { FC } from "react";
-import ExitL from "~/components/ExitL";
 import Footer from "~/components/Footer";
-import GlassCard from "~/components/GlassCard";
-import Parallax from "~/components/Parallax";
 import PricingPage from "./PricingPage";
 import ProductPage from "./ProductPage";
 import IntroSection from "./IntroSection";
-import AboutInstructor from "~/components/AboutInstructor";
+import AboutInstructor from "./AboutInstructor";
 
 export const MobileView: FC = () => (<div className="w-full h-[100dvh] block md:hidden dark:text-white dark:bg-gray-900">
     <div id='home' className="w-full mt-16 pb-4 flex flex-col scroll-mt-32 border-b-1 select-none">

@@ -1,5 +1,3 @@
-import Card from "./Card";
-
 const ProductCard = () => 
   <div className="w-full flex flex-row justify-center dark:bg-gray-900">
     <div className="w-[80%] lg:w-[65%] m-4 flex flex-col md:flex-row gap-2 bg-gray-50 dark:bg-gray-950 dark:shadow-black/60 border-t-1 shadow-gray-600 shadow-md hover:shadow-lg rounded rounded-t-none">

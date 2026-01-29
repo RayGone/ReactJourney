@@ -1,12 +1,11 @@
 import type { FC } from "react";
-import ExitL from "~/components/ExitL";
 import Footer from "~/components/Footer";
 import GlassCard from "~/components/GlassCard";
 import Parallax from "~/components/Parallax";
 import PricingPage from "./PricingPage";
 import ProductPage from "./ProductPage";
 import IntroSection from "./IntroSection";
-import AboutInstructor from "~/components/AboutInstructor";
+import AboutInstructor from "./AboutInstructor";
 
 export const ParallaxView: FC = () => (<div className="w-full h-full min-h-[600px] hidden md:block dark:text-white dark:bg-gray-900">
   <Parallax id='home' bgImg="/exitl.png" className="flex justify-center align-start">
