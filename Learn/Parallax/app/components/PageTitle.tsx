@@ -1,0 +1,1 @@
+export default ({title}: {title: string}) => <h1 className="text-3xl font-bold text-shadow-sm flex justify-center">{title}</h1>
