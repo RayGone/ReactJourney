@@ -30,14 +30,15 @@ export default ({}: {}) => {
                 <span><span className="text-3xl font-bolder pl-3">{testimonial?.success?.first_attempt}</span> passed on first attempt.</span> 
             </p>
         </SubCard>
-        <div id="testimonials" className="h-[250px] w-full p-4 overflow-hidden">
+        <div id="testimonials" className="w-full relative p-4 bg-gray-100 dark:bg-gray-700 overflow-hidden lg:shadow-[inset_0_0_10px_1px_rgba(0,0,0,0.5)]">
+            <div className="absolute top-0 left-0 z-10 h-full min-w-[60px] lg:min-w-[120px] bg-linear-to-r from-white via-white/40 dark:from-gray-900 dark:via-gray-900/40 to-white/0 dark:to-gray-900/0"></div>
+            <div className="absolute top-0 right-0 z-10 h-full min-w-[60px] lg:min-w-[120px] bg-linear-to-l from-white via-white/40 dark:from-gray-900 dark:via-gray-900/40 to-white/0 dark:to-gray-900/0"></div>
             <div className="w-fit h-full animate-scroll flex flex-row items-center justify-start gap-3">
-                
                 {testimonial?.testimonies.map((t: any)=>{
-                    return <Testimonial iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating} />
+                    return <Testimonial iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating} review_url={t?.url}/>
                 })}
                 {testimonial?.testimonies.map((t: any)=>{
-                    return <Testimonial iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating} />
+                    return <Testimonial iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating}  review_url={t?.url}/>
                 })}
 
             </div>

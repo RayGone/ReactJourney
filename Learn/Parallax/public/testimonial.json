@@ -1,0 +1,46 @@
+{
+    "version": "1.0.0",
+    "success": {
+        "total": 100,
+        "passed": 90,
+        "first_attempt": 70
+    },
+    "testimonies":[
+        {
+            "name": "Joey Rios",
+            "testimony": "Thanks to Exit-L, I passed my driving test on the first try! I felt well-prepared and confident. I highly recommend this school to anyone looking for reliable and professional driving instruction. Whether you're a beginner or need a refresher course, this school is definitely worth checking out!",
+            "url": "https://maps.app.goo.gl/xadHpartxMWPKLSe8",
+            "rating": 5
+        },
+        {
+            "name": "Akaldeep Kaur",
+            "testimony": "It was really an amazing experience to learn the car from you ,Amit. When I just moved from Sydney to here i was wondering like who can support me here to learn the driving and the Major task ,to pass the test.",
+            "rating": 5,
+            "url": "https://maps.app.goo.gl/UpPpzcexRRu9rbSk6"
+        },
+        {
+            "name": "Aymen Abuelyamen",
+            "testimony": "I recently passed my driving test on the first attempt, and I owe it all to my incredible instructor Amit. Their patience, clear guidance made the learning process smooth and enjoyable. Each lesson was tailored to address my weaknesses, and their expert instruction helped me feel confident and safe on the road. I highly recommend Amit to anyone seeking a knowledgeable and effective driving teacher.",
+            "rating": 5,
+            "url": "https://maps.app.goo.gl/dpKf8hfStarTQ7Ne6"
+        },
+        {
+            "name": "Arjun Nyaupane",
+            "testimony": "Amit, One of the Best driving instructor in Taree and Suburb. Helped me a lot in 2 lessons and Got  score of 109 in the test later afternoon Today.( in First Go from L No any Int. Liscense before), provide best and easy steps to pass plus best safe driving technics and always encourage and support me even from phone. Highly recommended Amit. Speaks Multiple Language(English, Hindi, Gujrati and many more Indian language so it could be more easy to understand things in the way you want.",
+            "rating": 5,
+            "url": "https://maps.app.goo.gl/xewpyCkGBu4DzVnc8"
+        },
+        {
+            "name": "Ruwanga Karunarathna",
+            "testimony": "I had a very good experience with Amith.he teach me very well and I was able to get the full licence from first attempt.",
+            "rating": 5,
+            "url": "https://maps.app.goo.gl/jJ832xJFQxdJowKr5"
+        },
+        {
+            "name": "Donnabel Rosales",
+            "testimony": "I’m grateful for the professional teaching of Amit. He is an excellent driver instructor that I met. He had taught me the simple but crucial points on how to pass the practical driver’s exam here in Taree, NSW. I got my license in 1 take with his guidance and patience on instructing me. I will be recommending Amit with my friends…next in line will be my husband. Thank you and God bless Amit!🙏🙏🙏",
+            "rating": 5,
+            "url": "https://maps.app.goo.gl/SzPENNirZxYRMeiD9"
+        }
+    ]
+}

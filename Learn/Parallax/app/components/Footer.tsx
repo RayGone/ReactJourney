@@ -5,7 +5,7 @@ import { faEnvelope, faAddressBook } from "@fortawesome/free-regular-svg-icons";
 import IconLink from "./IconLink";
 
 const Footer = () => {
-    return <footer id='contact' className="footer dark:bg-gray-900 py-4 px-5 dark:text-white border-t-2">
+    return <footer id='contact' className="footer bg-white dark:bg-gray-900 py-4 px-5 dark:text-white border-t-2">
         <div className="flex flex-col justify-center items-between gap-4 md:flex-row md:justify-between md:items-center">
             <Brand size="1.2rem" />
             <div className="text-center text-lg">

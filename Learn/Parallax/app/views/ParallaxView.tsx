@@ -9,8 +9,9 @@ import IntroSection from "./IntroSection";
 import AboutInstructor from "./AboutInstructor";
 import TestimonialView from "./TestimonialView";
 import PageTitle from "~/components/PageTitle";
+import UsefulLinksPage from "./UsefulLinksPage";
 
-export const ParallaxView: FC = () => (<div className="w-full h-full min-h-[600px] hidden md:block dark:text-white dark:bg-gray-900">
+export const ParallaxView: FC = () => (<div className="w-full h-full min-h-[600px] hidden md:block dark:text-white dark:bg-gray-900 scroll-smooth">
   <Parallax id='home' bgImg="/exitl.png" className="flex justify-center align-start">
     <GlassCard className="w-[75%] mt-32 p-16 flex flex-col">
       <IntroSection />
@@ -35,5 +36,6 @@ export const ParallaxView: FC = () => (<div className="w-full h-full min-h-[600p
   </Parallax>
   <PricingPage />
   <TestimonialView />
+  <UsefulLinksPage />
   <Footer />
 </div>);

@@ -10,6 +10,8 @@ html,
 body {
   height: 100dvh;
   box-sizing: border-box;
+  
+  @apply scroll-smooth;
 
   /* @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -85,17 +87,4 @@ body {
 
 .theme-toggle-button > .inactive {
   @apply bg-slate-700 dark:bg-slate-500 text-neutral-200 px-2;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 30s linear infinite running;
 }
