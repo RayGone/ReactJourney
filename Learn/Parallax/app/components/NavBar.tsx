@@ -35,12 +35,14 @@ export const NavBar: FC = () => {
         <div className="px-4 py-3 flex items-center justify-between md:justify-start">
           <Brand />
 
-          <ul className="md:flex hidden gap-6 text-base font-medium m-auto">
-            <li><Link to="/#home" className="hover:text-blue-600">Home</Link></li>
-            <li><Link to="/#about" className="hover:text-blue-600">About</Link></li>
-            <li><Link to="/#vehicle" className="hover:text-blue-600">Vehicle</Link></li>
-            <li><Link to="/#package" className="hover:text-blue-600">Pricing & Packages</Link></li>
-            <li><Link to="#contact" className="hover:text-blue-600">Contact</Link></li>
+          <ul className="md:flex flex-wrap justify-center hidden gap-6 text-base font-medium m-auto">
+            <li><Link to="/#home" className="underline hover:text-blue-600">Home</Link></li>
+            <li><Link to="/#about" className="underline hover:text-blue-600">About</Link></li>
+            <li><Link to="/#vehicle" className="underline hover:text-blue-600">Vehicle</Link></li>
+            <li><Link to="/#package" className="underline hover:text-blue-600">Pricing & Packages</Link></li>
+            <li><Link to="/#useful_links" className="underline hover:text-blue-600">Useful links</Link></li>
+            <li><Link to="/fyi" className="underline hover:text-blue-600">F1-F19 Fail Items</Link></li>
+            <li><Link to="#contact" className="underline hover:text-blue-600">Contact</Link></li>
           </ul>
 
           <div onClick={handleThemeChange} className="theme-toggle-button flex border-1 border-gray-800 dark:border-slate-500 rounded w-16 justify-center items-center">

@@ -115,7 +115,7 @@ const FYI: FC = () => {
             <div className="absolute top-0 w-full h-full bg-gray-200/80 dark:bg-gray-900/90 overflow-auto">
                 <div className="w-full p-4 flex flex-row justify-center mt-22">
                     <div className="w-full lg:w-[80%] xl:w-[70%] 2xl:w-[60%] flex flex-col">
-                        <h1 className=" font-black text-center text-4xl text-shadow-sm text-shadow-gray-500/50">Understanding the F1-F19 Fail Items: What Every Learner Driver Should Know.</h1>
+                        <h1 className=" font-black text-center text-3xl text-shadow-sm text-shadow-gray-500/50">Understanding the F1-F19 Fail Items: What Every Learner Driver Should Know.</h1>
                         <br />
                         <div className="text-justify mb-4">
                             Sitting your driving test is a big milestone, and it's completely normal to feel a mix of excitement and nerves. One of the best ways to boost your confidence is to understand exactly what the testing officer is looking for — especially the actions that can lead to an immediate fail. These are known as <strong>F1-F19 fail items</strong>, and they represent serious mistakes that compromise safety.
@@ -123,7 +123,7 @@ const FYI: FC = () => {
                         </div>
 
                         <hr /><br />
-                        <h2 className="m-2 font-extrabold text-3xl">🚫 F1–F19: Serious Fail Items Explained</h2>
+                        <h2 className="m-2 font-extrabold text-2xl">🚫 F1–F19: Serious Fail Items Explained</h2>
                         <div id="FailItemsSection" className="m-2">
                             <details className="m-1" open={true}>
                                 <summary className="font-bold text-xl  text-xl text-red-800 dark:text-red-500 underline">F1. Disobeying traffic signs, signals or road markings</summary>
@@ -254,7 +254,7 @@ const FYI: FC = () => {
                         </div>
 
                         <br /><hr /><br />
-                        <h2 className="m-2 font-extrabold text-3xl">📝After the Test: What Happens Next</h2>
+                        <h2 className="m-2 font-extrabold text-2xl">📝After the Test: What Happens Next</h2>
                         <div id="AfterTestSection" className="m-4">
                             <div className="text-justify mb-4">
                                 Once the test is complete, the testing officer will sit with you to discuss your performance. This conversation is designed to help you understand your strengths and areas for improvement.

@@ -4,11 +4,14 @@ import Card from "~/components/Card";
 import { Link } from "react-router";
 import SubCard from "~/components/SubCard";
 import { scrollToElement } from "~/scripts";
+import PageTitle from "~/components/PageTitle";
 
 export default () => 
   <div className="w-full dark:bg-gray-900">
     <div id="package" className="flex flex-col items-center dark:bg-gray-900 snap-start scroll-mt-20">
-      <h1 className="m-8 text-3xl font-bold text-shadow-sm flex justify-center">Pricing and Packages</h1>
+      <br />
+      <PageTitle title="Pricing and Packages" />
+      <br />
       <div className="w-full flex flex-row flex-wrap justify-center gap-5 md:gap-3">
         <Card className="" title="Normal Pricing">
           <h4 className="text-xl underline my-3 font-bold"><FontAwesomeIcon icon={faCar} className="text-gray-500/80" /> Driving Lesson</h4>
