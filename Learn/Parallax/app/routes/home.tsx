@@ -8,7 +8,7 @@ import PageLayout from "~/components/PageLayout";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Exit-L" },
-    { name: "description", content: "Exit-L Driving School" },
+    { name: "description", content: "Exit-L Driving School. Service available in Taree, Forster, Tuncurry, Wingham, Mid-coast area. Contact for driving lessons." },
   ];
 }
 

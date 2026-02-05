@@ -34,12 +34,12 @@ export default () => {
             <FontAwesomeIcon id={thisId+"_btn"} icon={faBars} className="p-2" size="2xl"
                 onClick={()=>toggleDropDown()} />
             <div id={thisId} className="w-auto z-50 hidden top-10 right-5 bg-gray-200 dark:bg-gray-800 rounded shadow-md shadow-black/40">
-              <ul className="flex flex-col text-xl w-fit text-shadow-sm text-gray-800 dark:text-gray-300">
+              <ul className="min-w-[250px] flex flex-col text-xl w-fit text-shadow-sm text-gray-800 dark:text-gray-300">
                 <li className="hover:bg-gray-400/20 active:bg-gray-400/40 px-3 pt-2 pb-1 border-b-1 hover:text-blue-600 dark:hover:text-blue-400" onClick={()=>handleNavClick("#home")}><Link to="/#home" className="">Home</Link></li>
                 <li className="hover:bg-gray-400/20 px-3 pt-2 pb-1 border-b-1 hover:text-blue-600  dark:hover:text-blue-400" onClick={()=>handleNavClick("#about")}><Link to="/#about" >About</Link></li>
                 <li className="hover:bg-gray-400/20 px-3 pt-2 pb-1 border-b-1 hover:text-blue-600  dark:hover:text-blue-400" onClick={()=>handleNavClick("#vehicle")}><Link to="/#vehicle" >Vehicle</Link></li>
                 <li className="hover:bg-gray-400/20 px-3 pt-2 pb-1 border-b-1 hover:text-blue-600  dark:hover:text-blue-400" onClick={()=>handleNavClick("#package")}><Link to="/#package" >Pricing & Packages</Link></li>
-                <li className="hover:bg-gray-400/20 px-3 pt-2 pb-1 border-b-1 hover:text-blue-600  dark:hover:text-blue-400" onClick={()=>handleNavClick("#package")}><Link to="/#useful_links" >Useful links</Link></li>
+                <li className="hover:bg-gray-400/20 px-3 pt-2 pb-1 border-b-1 hover:text-blue-600  dark:hover:text-blue-400" onClick={()=>handleNavClick("#useful_links")}><Link to="/#useful_links" >Useful links</Link></li>
                 <li className="hover:bg-gray-400/20 px-3 pt-2 pb-1 border-b-1 hover:text-blue-600  dark:hover:text-blue-400"><Link to="/fyi" >F1-F19: Fail Items</Link></li>
                 <li className="hover:bg-gray-400/20 px-3 pt-2 pb-1 hover:text-blue-600  dark:hover:text-blue-400" onClick={()=>handleNavClick("#contact")}><Link to="#contact">Contact</Link></li>
               </ul>

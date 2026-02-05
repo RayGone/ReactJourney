@@ -4,13 +4,17 @@ import { faFacebookF, faInstagram, faWhatsapp } from '@fortawesome/free-brands-s
 import { faEnvelope, faAddressBook } from "@fortawesome/free-regular-svg-icons";
 import IconLink from "./IconLink";
 
+const Rights = () => 
+                <p>©2023 EXIT-L Driving School.<br />All Rights Reserved.<br /></p>
+
+const DevelopedBy = () => <span className="text-xs">@developed by: Regan Maharjan <a href="mailto:raygx99@gmail.com" className="text-blue-500 underline">raygx99@gmail.com</a></span>
+            
+
 const Footer = () => {
     return <footer id='contact' className="footer bg-white dark:bg-gray-900 py-4 px-5 dark:text-white border-t-2">
         <div className="flex flex-col justify-center items-between gap-4 md:flex-row md:justify-between md:items-center">
             <Brand size="1.2rem" />
-            <div className="text-center text-lg">
-                <p>©2023 EXIT-L Driving School.<br />All Rights Reserved.</p>
-            </div>
+            <div className="text-center text-lg"><Rights /><br /><div className="md:block hidden"><DevelopedBy /></div></div>
             <div className="flex flex-col text-justify">
                 <h3 className="text-lg underline font-bold">Contact Us:</h3>
                 <div className="text-sm p-1">
