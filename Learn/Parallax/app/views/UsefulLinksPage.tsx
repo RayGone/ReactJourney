@@ -33,15 +33,17 @@ export default () => <div id="useful_links" className="m-auto pb-10 w-[95%] lg:w
         <span className="underline text-sm text-blue-500 text-wrap">https://www.nsw.gov.au/driving-boating-and-transport/<wbr />driver-and-rider-licences/driver-licences/<wbr />driver-licence-tests/hazard-perception-test</span>
       </a>
       
-      <a className=" dark:shadow-gray-950 rounded p-3 w-[300px] shadow-md hover:shadow-blue-800 dark:hover:shadow-blue-950"
-        href="https://exit-l.com.au/assets/pdf/Driver%20knowledge%20test%20questions%20Class%20C%20(car)%20licence%20(1).pdf" target="_blank">
-        <span className="font-bold text-shadow-sm">Driver knowledge test questions (Important PDF)</span><br />
-      </a>
-      
-      <a className=" dark:shadow-gray-950 rounded p-3 w-[300px] shadow-md hover:shadow-blue-800 dark:hover:shadow-blue-950"
-        href="https://exit-l.com.au/assets/pdf/guide-to-driving-test.pdf" target="_blank">
-        <span className="font-bold text-shadow-sm">Guite to driving test (Impotant PDF)</span><br />
-      </a>
+      <div className="flex flex-col">
+        <a className=" dark:shadow-gray-950 rounded p-3 w-[300px] shadow-md hover:shadow-blue-800 dark:hover:shadow-blue-950"
+          href="https://exit-l.com.au/assets/pdf/Driver%20knowledge%20test%20questions%20Class%20C%20(car)%20licence%20(1).pdf" target="_blank">
+          <span className="font-bold text-shadow-sm">Driver knowledge test questions.<br />(View PDF)</span><br />
+        </a>
+        
+        <a className=" dark:shadow-gray-950 rounded p-3 w-[300px] shadow-md hover:shadow-blue-800 dark:hover:shadow-blue-950"
+          href="https://exit-l.com.au/assets/pdf/guide-to-driving-test.pdf" target="_blank">
+          <span className="font-bold text-shadow-sm">Guide to driving test.<br />(View PDF)</span><br />
+        </a>
+      </div>
 
     </div>
   </div>

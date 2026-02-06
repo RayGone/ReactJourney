@@ -1,0 +1,33 @@
+[
+    {
+        "package-type": "normal",
+        "price": [
+            {
+                "price-type": "weekdays",
+                "value": 80
+            },
+            {
+                "price-type": "weekends",
+                "value": 90
+            },
+            {
+                "price-type": "car-hire",
+                "value": 145
+            }
+        ]
+    },
+    {
+        "package-type": "express",
+        "price": {
+                "price-type": "any",
+                "value": 345
+            }
+    },
+    {
+        "package-type": "test-day",
+        "price": {
+                "price-type": "any",
+                "value": 145
+            }
+    }
+]

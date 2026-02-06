@@ -37,11 +37,11 @@ body {
 
 
 .glass-card {
-    @apply bg-gray-50/30 dark:bg-gray-800/20;
+    @apply bg-gray-50/50 dark:bg-gray-800/30;
     /* @apply bg-[linear-gradient(180deg,rgba(255,255,255,0.8),transparent,rgba(255,255,255,0.3))] dark:bg-[linear-gradient(180deg,rgba(50,50,50,0.8),transparent,rgba(50,50,50,0.3))]; */
     /* backdrop-filter: blur(5px); 
     -webkit-backdrop-filter: blur(5px);*/
-    @apply backdrop-blur-xs backdrop-brightness-100 dark:backdrop-brightness-50 backdrop-contrast-100 relative overflow-auto rounded;
+    @apply backdrop-blur-xs backdrop-brightness-100 dark:backdrop-brightness-50 relative overflow-auto rounded;
 
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 

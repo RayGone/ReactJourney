@@ -29,8 +29,8 @@ export default ({iconUrl="",name, testimony, rating=5, review_url=""}: {iconUrl?
             {testimony}
         </div>
         <div>
-            {stared.map(()=> <FontAwesomeIcon key={Math.random().toLocaleString()} icon={faStarSolid} size="1x" className="text-yellow-500" />)}
-            {unstared.map(()=> <FontAwesomeIcon key={Math.random().toLocaleString()} icon={faStar} size="1x" className="text-yellow-500" />)}
+            {stared.map(()=> <FontAwesomeIcon key={Math.random().toLocaleString()+name+Math.random().toLocaleString()} icon={faStarSolid} size="1x" className="text-yellow-500" />)}
+            {unstared.map(()=> <FontAwesomeIcon key={"_"+Math.random().toLocaleString()+name} icon={faStar} size="1x" className="text-yellow-500" />)}
         </div>
         <span className="text-xs underline text-blue-400">Click to check full review.</span>
     </div>;

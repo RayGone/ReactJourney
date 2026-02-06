@@ -5,9 +5,18 @@ import { Link } from "react-router";
 import SubCard from "~/components/SubCard";
 import { scrollToElement } from "~/scripts";
 import PageTitle from "~/components/PageTitle";
+import { useEffect, useState } from "react";
+import type { IndividualPrice, Pricing } from "..";
+import useFetchPackagePricing from "~/hooks/useFetchPackagePricing";
 
-export default () => 
-  <div className="w-full dark:bg-gray-900">
+export default () => {
+  const [packagePrice] = useFetchPackagePricing();
+
+  const normal_package = (packagePrice as Pricing[]).filter((p)=>p["package-type"]=="normal")[0]
+  const express_package = (packagePrice as Pricing[]).filter((p)=>p["package-type"]=="express")[0]
+  const test_package = (packagePrice as Pricing[]).filter((p)=>p["package-type"]=="test")[0]
+
+  return packagePrice.length && <div className="w-full dark:bg-gray-900 border-t-1">
     <div id="package" className="flex flex-col items-center dark:bg-gray-900 snap-start scroll-mt-20">
       <br />
       <PageTitle title="Pricing and Packages" />
@@ -15,17 +24,18 @@ export default () =>
       <div className="w-full flex flex-row flex-wrap justify-center gap-5 md:gap-3">
         <Card className="" title="Normal Pricing">
           <h4 className="text-xl underline my-3 font-bold"><FontAwesomeIcon icon={faCar} className="text-gray-500/80" /> Driving Lesson</h4>
+          
           <SubCard >
-            <p>Weekdays:<br /><span className="text-3xl font-bolder px-3">$80/</span>hour</p>
+            <p>Weekdays:<br /><span className="text-3xl font-bolder pl-3">${(normal_package?.price as IndividualPrice[]).filter((p)=>p["price-type"]=="weekdays")[0]?.value}/</span>hour</p>
           </SubCard><br />
           <SubCard>
-            <p>Weekends:<br /><span className="text-3xl font-bolder px-2">$90/</span>hour</p>
+            <p>Weekends:<br /><span className="text-3xl font-bolder pl-2">${(normal_package?.price as IndividualPrice[]).filter((p)=>p["price-type"]=="weekends")[0]?.value}/</span>hour</p>
           </SubCard>
           <br />
           <h4 className="text-xl underline my-3 font-bold"><FontAwesomeIcon icon={faCar} className="text-gray-500/80" /> Car Hire</h4>
           <span className="text-base">Available only for Driving Test</span>
           <SubCard>
-            <p><span className="text-3xl font-bolder pl-3">$145/</span>hour</p>
+            <p><span className="text-3xl font-bolder pl-3">${(normal_package?.price as IndividualPrice[]).filter((p)=>p["price-type"]=="car-hire")[0]?.value}/</span>hour</p>
           </SubCard>          
         </Card>   
 
@@ -59,7 +69,7 @@ export default () =>
           </ul>
 
           <SubCard bgColor="bg-rose-700/30 dark:bg-rose-500/80">
-            <p><span className="text-3xl font-bolder pl-3">$345/</span>package</p>
+            <p><span className="text-3xl font-bolder pl-3">${(express_package?.price as IndividualPrice)?.value}/</span>package</p>
           </SubCard><br />   
 
           <div className="text-sm bg-gray-200 dark:bg-gray-700 rounded-xl p-2 text-justify text-shadow-sm">
@@ -92,3 +102,4 @@ export default () =>
     <br />
     <br />
   </div>;
+}

@@ -5,8 +5,9 @@ import Testimonial from "~/components/TestimonialCard";
 
 export default ({}: {}) => {
     const [testimonial, setTestimonial] = useState<any>({error: true});
+
     useEffect(()=>{
-        fetch("./testimonial.json")
+        fetch("/testimonial.json")
             .then((response)=> response.json())
             .then((json)=>{
                 json['error'] = false;
@@ -35,10 +36,10 @@ export default ({}: {}) => {
             <div className="absolute top-0 right-0 z-10 h-full min-w-[60px] lg:min-w-[120px] bg-linear-to-l from-white via-white/40 dark:from-gray-900 dark:via-gray-900/40 to-white/0 dark:to-gray-900/0"></div>
             <div className="w-fit h-full animate-scroll flex flex-row items-center justify-start gap-3">
                 {testimonial?.testimonies.map((t: any)=>{
-                    return <Testimonial iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating} review_url={t?.url}/>
+                    return <Testimonial key={"1_"+t?.name} iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating} review_url={t?.url}/>
                 })}
                 {testimonial?.testimonies.map((t: any)=>{
-                    return <Testimonial iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating}  review_url={t?.url}/>
+                    return <Testimonial key={"2_"+t?.name}  iconUrl="" name={t?.name} testimony={t?.testimony} rating={t?.rating}  review_url={t?.url}/>
                 })}
 
             </div>
